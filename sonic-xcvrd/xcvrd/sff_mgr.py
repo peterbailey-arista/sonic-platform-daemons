@@ -435,6 +435,12 @@ class SffManagerTask(threading.Thread):
                     # Skip if these essential routines are not available
                     continue
 
+                try:
+                    api = sfp.get_xcvr_api()
+                    api.set_lpmode(False)
+                except:
+                    sfp.set_lpmode(False)
+
                 if active_lanes is None:
                     active_lanes = self.get_active_lanes_for_lport(lport, subport_idx,
                                                                len(lanes_list),
