@@ -435,6 +435,8 @@ class SffManagerTask(threading.Thread):
                     # Skip if these essential routines are not available
                     continue
 
+                sfp.set_lpmode(False)
+
                 if active_lanes is None:
                     active_lanes = self.get_active_lanes_for_lport(lport, subport_idx,
                                                                len(lanes_list),
